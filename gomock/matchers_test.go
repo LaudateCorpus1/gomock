@@ -18,8 +18,8 @@ import (
 	"errors"
 	"testing"
 
-	"github.com/rafrombrc/gomock/gomock"
-	mock_matcher "github.com/rafrombrc/gomock/gomock/mock_matcher"
+	"github.com/CrowdStrike/gomock/gomock"
+	mock_matcher "github.com/CrowdStrike/gomock/gomock/mock_matcher"
 )
 
 func TestMatchers(t *testing.T) {

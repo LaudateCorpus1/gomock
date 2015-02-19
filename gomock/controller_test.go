@@ -19,7 +19,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/rafrombrc/gomock/gomock"
+	"github.com/CrowdStrike/gomock/gomock"
 )
 
 type ErrorReporter struct {
@@ -229,6 +229,16 @@ func TestAnyTimes(t *testing.T) {
 	}
 	reporter.assertPass("After 100 method calls.")
 	ctrl.Finish()
+}
+
+func ExampleCall_Do() {
+	myMock.EXPECT().FunctionCall(arg1, arg2, arg3).Do(
+		func(arg1 string, arg2 int32, arg3 bool) {
+			if arg1 != "foo" {
+				t.Error("arg1 was not equal to 'foo'")
+			}
+		},
+	)
 }
 
 func TestDo(t *testing.T) {

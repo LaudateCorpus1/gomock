@@ -4,7 +4,7 @@
 package mock_gomock
 
 import (
-	gomock "github.com/rafrombrc/gomock/gomock"
+	gomock "github.com/CrowdStrike/gomock/gomock"
 )
 
 // Mock of Matcher interface
