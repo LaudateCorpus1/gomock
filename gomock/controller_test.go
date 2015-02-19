@@ -231,12 +231,22 @@ func TestAnyTimes(t *testing.T) {
 	ctrl.Finish()
 }
 
-func ExampleCall_Do() {
-	myMock.EXPECT().FunctionCall(arg1, arg2, arg3).Do(
+func ExampleCall_Do_basic() {
+	myMock.EXPECT().FunctionCall("foo", "bar", "baz").Do(
 		func(arg1 string, arg2 int32, arg3 bool) {
 			if arg1 != "foo" {
 				t.Error("arg1 was not equal to 'foo'")
 			}
+		},
+	)
+}
+
+func ExampleCall_Do_channelSend() {
+	// When a function you are mocking expects an argument of a channel
+	// which it will use to send on, you can use Do to handle the sending
+	myMock.EXPECT().FuncionCall("foo", gomock.Any(), "baz").Do(
+		func(arg1 string, arg2 chan map[int64]bool, arg3 string) {
+			arg2 <- map[int64]bool{}
 		},
 	)
 }
