@@ -9,8 +9,8 @@ Installation
 Once you have [installed Go][golang-install], run these commands
 to install the `gomock` package and the `mockgen` tool:
 
-    go install code.google.com/p/gomock/gomock
-    go install code.google.com/p/gomock/mockgen
+    go install github.com/CrowdStrike/gomock
+    go install github.com/CrowdStrike/mockgen
 
 
 Documentation
@@ -18,9 +18,10 @@ Documentation
 
 After installing, you can use `go doc` to get documentation:
 
-    go doc code.google.com/p/gomock/gomock
+    go doc github.com/CrowdStrike/gomock
 
-Alternatively, there is an online reference for the package hosted on GoPkgDoc
+Alternatively, there is an online reference for the package hosted on
+godoc.org
 [here][gomock-ref].
 
 
@@ -55,10 +56,12 @@ It supports the following flags:
 For an example of the use of `mockgen`, see the `sample/` directory. In simple
 cases, you will need only the `-source` flag.
 
+Writing Tests with mocks
+------------------------
 
-TODO: Brief overview of how to create mock objects and set up expectations, and
-an example.
+TODO
+
 
 [golang]: http://golang.org/
 [golang-install]: http://golang.org/doc/install.html#releases
-[gomock-ref]: http://gopkgdoc.appspot.com/pkg/code.google.com/p/gomock/gomock
+[gomock-ref]: https://godoc.org/github.com/CrowdStrike/gomock/gomock
