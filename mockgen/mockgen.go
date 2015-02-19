@@ -30,11 +30,11 @@ import (
 	"strings"
 	"unicode"
 
-	"github.com/rafrombrc/gomock/mockgen/model"
+	"code.google.com/p/gomock/mockgen/model"
 )
 
 const (
-	gomockImportPath = "github.com/rafrombrc/gomock/gomock"
+	gomockImportPath = "code.google.com/p/gomock/gomock"
 )
 
 var (
@@ -243,7 +243,7 @@ func (g *generator) GenerateMockInterface(intf *model.Interface) error {
 	mockType := mockName(intf.Name)
 
 	g.p("")
-	g.p("// Mock of %v interface", intf.Name)
+	g.p("// %v is a mock of %v interface", mockType, intf.Name)
 	g.p("type %v struct {", mockType)
 	g.in()
 	g.p("ctrl     *gomock.Controller")
@@ -252,7 +252,7 @@ func (g *generator) GenerateMockInterface(intf *model.Interface) error {
 	g.p("}")
 	g.p("")
 
-	g.p("// Recorder for %v (not exported)", mockType)
+	g.p("// _%vRecorder for %v (not exported)", mockType, mockType)
 	g.p("type _%vRecorder struct {", mockType)
 	g.in()
 	g.p("mock *%v", mockType)
@@ -265,6 +265,7 @@ func (g *generator) GenerateMockInterface(intf *model.Interface) error {
 	//g.p("var _ %v = (*%v)(nil)", typeName, mockType)
 	//g.p("")
 
+	g.p("// New%v is a mocked function", mockType)
 	g.p("func New%v(ctrl *gomock.Controller) *%v {", mockType, mockType)
 	g.in()
 	g.p("mock := &%v{ctrl: ctrl}", mockType)
@@ -275,6 +276,7 @@ func (g *generator) GenerateMockInterface(intf *model.Interface) error {
 	g.p("")
 
 	// XXX: possible name collision here if someone has EXPECT in their interface.
+	g.p("// EXPECT is the mock expect function for %v", mockType)
 	g.p("func (_m *%v) EXPECT() *_%vRecorder {", mockType, mockType)
 	g.in()
 	g.p("return _m.recorder")
@@ -332,6 +334,7 @@ func (g *generator) GenerateMockMethod(mockType string, m *model.Method, pkgOver
 		retString = " " + retString
 	}
 
+	g.p("// %v is a mock for %v", m.Name, mockType)
 	g.p("func (_m *%v) %v(%v)%v {", mockType, m.Name, argString, retString)
 	g.in()
 
@@ -388,6 +391,7 @@ func (g *generator) GenerateMockRecorderMethod(mockType string, m *model.Method)
 		argString += fmt.Sprintf("arg%d ...interface{}", nargs)
 	}
 
+	g.p("// %v is a mock", m.Name)
 	g.p("func (_mr *_%vRecorder) %v(%v) *gomock.Call {", mockType, m.Name, argString)
 	g.in()
 
