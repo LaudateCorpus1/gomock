@@ -28,7 +28,7 @@ import (
 	"runtime"
 	"text/template"
 
-	"github.com/rafrombrc/gomock/mockgen/model"
+	"github.com/CrowdStrike/gomock/mockgen/model"
 )
 
 var (

@@ -30,7 +30,7 @@ import (
 	"strings"
 	"unicode"
 
-	"code.google.com/p/gomock/mockgen/model"
+	"github.com/CrowdStrike/gomock/mockgen/model"
 )
 
 const (
