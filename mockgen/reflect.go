@@ -117,7 +117,7 @@ import (
 	"path"
 	"reflect"
 
-	"github.com/rafrombrc/gomock/mockgen/model"
+	"github.com/CrowdStrike/gomock/mockgen/model"
 
 	pkg_ {{printf "%q" .ImportPath}}
 )
