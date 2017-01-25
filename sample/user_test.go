@@ -4,10 +4,10 @@ package user_test
 import (
 	"testing"
 
-	"code.google.com/p/gomock/gomock"
-	"code.google.com/p/gomock/sample"
-	"code.google.com/p/gomock/sample/imp1"
-	mock_user "code.google.com/p/gomock/sample/mock_user"
+	"github.com/CrowdStrike/gomock/gomock"
+	"github.com/CrowdStrike/gomock/sample"
+	"github.com/CrowdStrike/gomock/sample/imp1"
+	mock_user "github.com/CrowdStrike/gomock/sample/mock_user"
 )
 
 func TestRemember(t *testing.T) {

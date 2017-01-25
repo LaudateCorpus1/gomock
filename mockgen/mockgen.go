@@ -34,7 +34,7 @@ import (
 )
 
 const (
-	gomockImportPath = "code.google.com/p/gomock/gomock"
+	gomockImportPath = "github.com/CrowdStrike/gomock/gomock"
 )
 
 var (
